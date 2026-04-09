@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo" onclick="show('home')">FROST<span>.</span>VORTEX</div>
+      <div class="nav-links" id="navLinks">
+        <a onclick="show('home')" class="active">Home</a>
+        <a onclick="show('work')">Work</a>
+        <a onclick="show('about')">About</a>
+        <a onclick="show('services')">Services</a>
+        <a onclick="show('contact')">Contact</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ─── HOME ─── -->
+    <section id="home" class="active">
+      <div class="hero-left">
+        <div>
+          <p class="hero-eyebrow">Graphic Designer — Abuja & Remote</p>
+          <h1 class="hero-name">
+            SOLOMON<br /><span class="accent">ONUCHE</span><br />MOSES
+          </h1>
+          <p class="hero-tagline">
+            I craft visual identities, brand systems, and digital experiences
+            that make people stop scrolling.
+          </p>
+        </div>
+        <button class="hero-cta" onclick="show('work')">View My Work →</button>
+      </div>
+      <div class="hero-right">
+        <div class="hero-graphic">
+          <div class="hg-circle"></div>
+          <div class="hg-circle"></div>
+          <div class="hg-circle"></div>
+          <div class="hg-center">DESIGN<br />IS<br />POWER</div>
+        </div>
+        <p class="hero-caption">Available for projects · 2025</p>
+      </div>
+    </section>
+
+    <!-- ─── WORK ─── -->
+    <section id="work">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Selected Work</h2>
+        </div>
+        <div
+          style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap"
+        >
+          <span class="section-count" id="workCount">01 Project</span>
+          <div class="upload-btn-wrap">
+            <button class="upload-btn">+ Add Work</button>
+            <input
+              type="file"
+              id="bulkUpload"
+              accept="image/*"
+              multiple
+              onchange="addImages(this)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="works-grid" id="worksGrid">
+        <div class="work-card" onclick="openLightbox(0)">
+          <img
+            src="afrofashionfest.jpeg"
+            alt="AfroFashion Fest 2025 — Infusion"
+            onerror="
+              this.src =
+                'https://via.placeholder.com/400x533/1a1a1a/d4f000?text=AfroFest+2025'
+            "
+          />
+          <div class="work-overlay">
+            <p class="work-title">AfroFashion Fest Infusion</p>
+            <span class="work-tag">Event Poster</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="openLightbox(0)">
+          <img
+            src="Brand.png"
+            alt="Ina's Atelier — Brand Identity"
+            onerror="
+              this.src =
+                'https://via.placeholder.com/400x533/1a1a1a/d4f000?text=AfroFest+2025'
+            "
+          />
+          <div class="work-overlay">
+            <p class="work-title">Ina's Atelier</p>
+            <span class="work-tag">Event Poster</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="openLightbox(0)">
+          <img
+            src="Christmas wishes.jpg"
+            alt="Merry Christmas"
+            onerror="
+              this.src =
+                'https://via.placeholder.com/400x533/1a1a1a/d4f000?text=AfroFest+2025'
+            "
+          />
+          <div class="work-overlay">
+            <p class="work-title">Merry Christmas</p>
+            <span class="work-tag">Event Poster</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="openLightbox(0)">
+          <img
+            src="Frost vortex.jpg"
+            alt="Frost Vortex"
+            onerror="
+              this.src =
+                'https://via.placeholder.com/400x533/1a1a1a/d4f000?text=AfroFest+2025'
+            "
+          />
+          <div class="work-overlay">
+            <p class="work-title">Frost Vortex</p>
+            <span class="work-tag">Event Poster</span>
+          </div>
+        </div>
+
+        <!-- Empty slots for your uploads -->
+        <div class="work-card-empty" id="emptySlot1">
+          <div class="plus">+</div>
+          <span>Add project</span>
+          <input type="file" accept="image/*" onchange="addSingleImage(this)" />
+        </div>
+
+        <div class="work-card-empty" id="emptySlot2">
+          <div class="plus">+</div>
+          <span>Add project</span>
+          <input type="file" accept="image/*" onchange="addSingleImage(this)" />
+        </div>
+
+        <div class="work-card-empty" id="emptySlot3">
+          <div class="plus">+</div>
+          <span>Add project</span>
+          <input type="file" accept="image/*" onchange="addSingleImage(this)" />
+        </div>
+
+        <div class="work-card-empty" id="emptySlot4">
+          <div class="plus">+</div>
+          <span>Add project</span>
+          <input type="file" accept="image/*" onchange="addSingleImage(this)" />
+        </div>
+
+        <div class="work-card-empty" id="emptySlot5">
+          <div class="plus">+</div>
+          <span>Add project</span>
+          <input type="file" accept="image/*" onchange="addSingleImage(this)" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── LIGHTBOX ─── -->
+    <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+      <div class="lightbox-inner">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+        <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+        <img id="lbImg" src="" alt="" />
+        <div class="lightbox-info">
+          <span class="lb-title" id="lbTitle"></span>
+          <span class="lb-tag" id="lbTag"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about">
+      <div class="about-left">
+        <h2 class="about-headline">
+          Design is<br /><em>my language.</em><br />Bold is<br />my dialect.
+        </h2>
+        <div class="about-body">
+          <p>
+            I'm a graphic designer based in Abuja, Nigeria, with over 3 years
+            creating visual identities, editorial layouts, and digital
+            experiences that stop people in their tracks.
+          </p>
+          <p>
+            My work blends cultural richness with contemporary boldness rooted
+            in Africa, built for the world.
+          </p>
+          <p>
+            I've worked with startups, agencies, and global brands across
+            branding, print, packaging, and digital design.
+          </p>
+        </div>
+        <div class="skills-row">
+          <span class="skill-pill">Brand Identity</span>
+          <span class="skill-pill">Typography</span>
+          <span class="skill-pill">Print Design</span>
+          <span class="skill-pill">UI / UX</span>
+          <span class="skill-pill">Packaging</span>
+          <span class="skill-pill">Motion</span>
+          <span class="skill-pill">Adobe Suite</span>
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">Illustration</span>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="stat-stack">
+          <div class="stat-item">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Design Awards</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SERVICES ─── -->
+    <section id="services">
+      <div class="section-header">
+        <h2 class="section-title">Services & Pricing</h2>
+        <span class="section-count">04 Offerings</span>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">01</div>
+          <p class="service-name">Brand Identity</p>
+          <p class="service-desc">
+            Full visual identity systems — logo, color palette, typography,
+            brand guidelines. Everything your brand needs to show up
+            consistently and powerfully.
+          </p>
+          <span class="service-price">From ₦250,000</span>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">02</div>
+          <p class="service-name">Print & Editorial</p>
+          <p class="service-desc">
+            Posters, magazines, flyers, lookbooks, and campaigns. High-impact
+            print design built for real-world presence and lasting impressions.
+          </p>
+          <span class="service-price">From ₦80,000</span>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">03</div>
+          <p class="service-name">UI / UX Design</p>
+          <p class="service-desc">
+            App and web interfaces designed from the user up. Wireframes,
+            mockups, and handoff-ready Figma files that developers love.
+          </p>
+          <span class="service-price">From ₦200,000</span>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">04</div>
+          <p class="service-name">Social Media & Digital</p>
+          <p class="service-desc">
+            Scroll-stopping templates, content systems, and campaign visuals.
+            Consistent, on-brand design across every platform and format.
+          </p>
+          <span class="service-price">From ₦50,000</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact">
+      <div class="contact-left">
+        <h2 class="contact-headline">
+          Let's make<br />something<br /><span>bold.</span>
+        </h2>
+        <p class="contact-sub">
+          Have a project in mind? I'd love to hear about it. Fill out the form
+          or reach out directly.
+        </p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <strong>Email</strong>
+            Msolomon154@gmail.com <br />
+            09033521386
+          </div>
+          <div class="contact-info-item">
+            <strong>Location</strong>
+            Abuja, Nigeria · Remote Available
+          </div>
+          <div class="contact-info-item">
+            <strong>Availability</strong>
+            Open to new projects
+          </div>
+          <div class="contact-info-item">
+            <strong>Follow</strong>
+            <a href="https://www.instagram.com/_big_frost_/">Instagram</a>
+            <br />
+            <a href="https://x.com/Mozezfrost">X</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div id="contactForm">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input
+              class="form-input"
+              type="text"
+              id="fname"
+              placeholder="Amina Okafor"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input
+              class="form-input"
+              type="email"
+              id="femail"
+              placeholder="amina@company.com"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Type</label>
+            <select class="form-select" id="ftype">
+              <option value="">Select a service...</option>
+              <option>Brand Identity</option>
+              <option>Print & Editorial</option>
+              <option>UI / UX Design</option>
+              <option>Social Media & Digital</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Budget Range</label>
+            <select class="form-select" id="fbudget">
+              <option value="">Select budget...</option>
+              <option>Under ₦100,000</option>
+              <option>₦100,000 – ₦250,000</option>
+              <option>₦250,000 – ₦500,000</option>
+              <option>₦500,000+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tell me about your project</label>
+            <textarea
+              class="form-textarea"
+              id="fmessage"
+              placeholder="Describe your project, goals, and timeline..."
+            ></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">
+            Send Message →
+          </button>
+          <div class="form-success" id="formSuccess">
+            Message sent! I'll get back to you within 24 hours.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <p>© 2025 Frost Vortex - Graphic Designer</p>
+      <p>Abuja, Nigeria · Msolomon154@gmail.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
