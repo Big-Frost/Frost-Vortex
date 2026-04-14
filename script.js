@@ -23,6 +23,18 @@ const gallery = [
     title: "Frost Vortex",
     tag: "Event Poster",
   },
+
+  {
+    src: "Dam delicasy.png",
+    title: "Dam Delicacy",
+    tag: "Price List",
+  },
+
+  {
+    src: "Emerald estate.png",
+    title: "Emerald Estate",
+    tag: "Listing",
+  },
 ];
 
 // ── Navigation ──
@@ -58,55 +70,6 @@ function updateCount() {
     n + " Project" + (n !== 1 ? "s" : "");
 }
 
-// // ── Bulk upload ──
-// function addImages(input) {
-//   Array.from(input.files).forEach((file) => {
-//     const reader = new FileReader();
-//     reader.onload = function (e) {
-//       const title = file.name.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
-//       gallery.push({ src: e.target.result, title: title, tag: "Design" });
-//       renderGallery();
-//     };
-//     reader.readAsDataURL(file);
-//   });
-//   input.value = "";
-// }
-
-// // ── Single slot upload ──
-// function addSingleImage(input) {
-//   const file = input.files[0];
-//   if (!file) return;
-//   const reader = new FileReader();
-//   reader.onload = function (e) {
-//     const title = file.name.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
-//     gallery.push({ src: e.target.result, title: title, tag: "Design" });
-//     renderGallery();
-//   };
-//   reader.readAsDataURL(file);
-//   input.value = "";
-// }
-
-// // ── Render gallery grid ──
-// function renderGallery() {
-//   const grid = document.getElementById("worksGrid");
-//   grid.innerHTML = "";
-//   gallery.forEach((item, i) => {
-//     const card = document.createElement("div");
-//     card.className = "work-card";
-//     card.onclick = () => openLightbox(i);
-//     card.innerHTML = `<img src="${item.src}" alt="${item.title}"><div class="work-overlay"><p class="work-title">${item.title}</p><span class="work-tag">${item.tag}</span></div>`;
-//     grid.appendChild(card);
-//   });
-//   for (let j = 0; j < 2; j++) {
-//     const empty = document.createElement("div");
-//     empty.className = "work-card-empty";
-//     empty.innerHTML = `<div class="plus">+</div><span>Add project</span><input type="file" accept="image/*" onchange="addSingleImage(this)">`;
-//     grid.appendChild(empty);
-//   }
-//   updateCount();
-// }
-
-// ── Lightbox ──
 let lbIndex = 0;
 
 function openLightbox(i) {
